@@ -1,3 +1,5 @@
+const {user_game, user_game_biodata} = require('../models')
+
 module.exports = {
     getLogin: (req, res) =>{
         res.render('login')
@@ -9,7 +11,17 @@ module.exports = {
         res.send('register')
     },
     postRegister: (req, res) =>{
-        let { username, password, firstName, lastName, birthplace} = req.body
-        res.send('register')
+        let {username, password, first_name, last_name, birthplace} = req.body
+        user_game.register({username, password}) //based on views
+            .then(user_game => {
+                user_game_biodata.create({
+                    id_user: user_game.id,
+                    first_name,
+                    last_name,
+                    birthplace
+                }). then(response => {
+                    res.redirect('/login')
+                })
+            })  
     }
 }
