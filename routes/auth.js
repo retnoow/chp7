@@ -1,16 +1,7 @@
 const routes = require('express').Router()
+const {getLogin, getRegister} = require('../controllers/authController')
 
-routes.get('/register', (req, res)=>{
-    res.send('halaman login')
-})
-
-routes.post('/login', (req, res)=>{
-    res.send('logic login')
-})
-
-routes.post('/register', (req, res)=>{
-    res.send('login register')
-})
-
+routes.get('/login', getLogin)
+routes.get('/register', getRegister)
 
 module.exports = routes
