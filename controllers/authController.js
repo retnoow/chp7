@@ -1,9 +1,8 @@
 module.exports = {
     getLogin: (req, res) =>{
-        res.send('halaman login baru')
+        res.send('login')
     },
     getRegister: (req, res) =>{
-        res.send('halaman register')
-
+        res.send('register')
     }
 }
