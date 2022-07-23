@@ -7,20 +7,39 @@
 
 <body>
     <%- include('./partials/navbar') %>
-    <section class="img-fluid position-relative d-flex align-items-lg-center justify-content-center">
-        <div class="container m-auto text-center">
-            <h1 class="display-3 text-uppercase fw-bold">play traditional game</h1>
-            <h2 class="lead mt-4">Experience new traditional game play</h2>
-            <p class="lead mt-3 p-3">
-                <button type="button" class="btn btn-warning btn-lg">PLAY NOW</button>
-            </p>
 
-            <div class="scroll">
-                <p>THE STORY</p>
-            </div>
+    <div class="container">
+        <div class="row mt-5">
+            <h4 class="mb-5 text-center"></h4>
+            <h1 class="text-center">Register</h1>
+            <form action="/register" method="post">
+
+                <div class="mt-3 mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" placeholder="Username" class="form-control" aria-describedby="emailHelp"
+                        name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" class="form-control" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input type="text" placeholder="First Name" class="form-control" name="first_name">
+                </div>
+                <div class="mb-3">
+                    <label for="last-name" class="form-label">Last Name</label>
+                    <input type="text" placeholder="Last Name" class="form-control" name="last_name">
+                </div>
+                <div class="mb-5">
+                    <label for="birthplace" class="form-label">Birthplace</label>
+                    <input type="text" placeholder="Birthplace" class="form-control" name="birthplace">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
         </div>
-    </section>
+    </div>
 
 </body>
-
 </html>
