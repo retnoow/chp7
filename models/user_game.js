@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasOne(models.user_game_biodata, {foreignKey: "id_user"})
+      this.hasOne(models.user_game_biodata, {foreignKey: "id_user"});
     }
   }
   user_game.init({
