@@ -4,6 +4,7 @@ const {
 } = require('sequelize');
 
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 module.exports = (sequelize, DataTypes) => {
   class user_game extends Model {
@@ -43,6 +44,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
+    generateToken = () =>{
+
+      const payload ={
+        id: this.id,
+        username: this.username
+      }
+
+      const rahasia = "ini rahasia"
+
+      const token = jwt.sign(payload, rahasia)
+      return token
+
+    }
 
   }
   user_game.init({
