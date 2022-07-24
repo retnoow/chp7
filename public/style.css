@@ -7,7 +7,7 @@
 
 body{
 
-    background-color: white;
+    background: #08e08de8; 
     font-family: 'Open Sans';
     color: white;
     font-size: 16px;
@@ -69,10 +69,4 @@ section{
 
 .scroll p{
     margin: -5px;
-}
-
-/* login */
-
-.login-bg{
-    background: #08e08de8; 
 }

@@ -8,6 +8,7 @@ module.exports = {
     getRegister: (req, res) =>{
         res.render('register')
     },
+    
     postLogin: passport.authenticate('local', {
             successRedirect: '/dashboard',
             failureRedirect: '/login',

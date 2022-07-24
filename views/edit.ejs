@@ -6,13 +6,11 @@
 </head>
 
 <body>
-    <%- include('./partials/navbar') %>
-
     <div class="container">
         <div class="row mt-5">
             <h4 class="mb-5 text-center"></h4>
-            <h1 class="text-center">Register</h1>
-            <form action="/register" method="post">
+            <h1 class="text-center">Edit Data Users</h1>
+            <form action="/user/<%= user.id %>/update" method="post">
 
                 <div class="mt-3 mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -36,7 +34,7 @@
                     <input type="text" placeholder="Birthplace" class="form-control" name="birthplace" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
             </form>
         </div>
     </div>
