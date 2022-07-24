@@ -29,7 +29,7 @@ module.exports = {
       p2_secondHand: {
         type: Sequelize.STRING
       },
-      p3_thirdHand: {
+      p2_thirdHand: {
         type: Sequelize.STRING
       },
       winner_id: {

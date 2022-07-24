@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     p1_thirdHand: DataTypes.STRING,
     p2_firstHand: DataTypes.STRING,
     p2_secondHand: DataTypes.STRING,
-    p3_thirdHand: DataTypes.STRING,
+    p2_thirdHand: DataTypes.STRING,
     winner_id: DataTypes.INTEGER
   }, {
     sequelize,

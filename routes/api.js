@@ -1,10 +1,12 @@
 const routes = require('express').Router()
-const {login, whoami, fight, createRoom} = require('../controllers/apiController')
+const {login, whoami, fight, createRoom, winner, join} = require('../controllers/apiController')
 const restrictJWT = require('../middlewares/restrictJWT')
 
 routes.post('/login', login)
 routes.get('/whoami', restrictJWT, whoami)
-routes.post('/create-room', createRoom)
-routes.post('/fight/:roomid', fight)
+routes.post('/create-room', restrictJWT, createRoom)
+routes.post('/fight/:roomid', restrictJWT, fight)
+routes.post('/join/:roomid', restrictJWT, join)
+routes.get('/winner/:roomid', winner)
 
 module.exports = routes
