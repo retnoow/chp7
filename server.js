@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const authRoutes = require('./routes/auth')
 const homeRoutes = require('./routes/homepage')
+const dashboardRoutes = require('./routes/dashboard')
 const session = require('express-session')
 const flash = require('express-flash')
 
@@ -30,7 +31,7 @@ app.use(flash())
 // for routing
 app.use(authRoutes)
 app.use(homeRoutes)
-
+app.use(dashboardRoutes)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

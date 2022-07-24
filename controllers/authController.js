@@ -9,7 +9,7 @@ module.exports = {
         res.render('register')
     },
     postLogin: passport.authenticate('local', {
-            successRedirect: '/',
+            successRedirect: '/dashboard',
             failureRedirect: '/login',
             failureFlash: true
     }),
