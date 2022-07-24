@@ -9,8 +9,10 @@ const format = (user) =>{
     }
 }
 
-const isP1Win = (p1Hand, p2hand) =>{
+const isP1Win = (p1Hand, p2Hand) =>{
     //if p1 win return 1
+    if(p1Hand == 'r' && p2Hand == 's' || (p1Hand == 's' && p2Hand == 'p' || (p1Hand == 'p' && p2Hand == 'r' )))
+        return res.json({message: 'player 1 win'})
 
     //else return -1
 
