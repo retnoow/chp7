@@ -7,6 +7,27 @@
 
 <body>
     <%- include('./partials/navbar') %>
+
+    <div class="container">
+        <div class="row mt-5">
+            <h4 class="mb-5 text-center"></h4>
+            <h1 class="text-center">Login</h1>
+            <form action="/login" method="post">
+
+                <div class="mt-3 mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" placeholder="Username" class="form-control" aria-describedby="emailHelp"
+                        name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" placeholder="Password" class="form-control" name="password">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 const {user_game, user_game_biodata} = require('../models')
+const passport = require('../lib/passport')
 
 module.exports = {
     getLogin: (req, res) =>{
@@ -7,9 +8,11 @@ module.exports = {
     getRegister: (req, res) =>{
         res.render('register')
     },
-    postLogin: (req, res) =>{
-        res.send('register')
-    },
+    postLogin: passport.authenticate('local', {
+            successRedirect: '/',
+            failureRedirect: '/login',
+            failureFlash: true
+    }),
     postRegister: (req, res) =>{
         let {username, password, first_name, last_name, birthplace} = req.body
         user_game.register({username, password}) //based on views
@@ -25,3 +28,5 @@ module.exports = {
             })  
     }
 }
+
+
