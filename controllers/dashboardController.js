@@ -1,4 +1,5 @@
 const {user_game, user_game_biodata} = require('../models')
+const passport = require('../lib/passport')
 
 module.exports = {
     getDashboard: (req, res) =>{
@@ -9,46 +10,48 @@ module.exports = {
         })
     },
 
-    getData: (req, res) => {
+    getDataUser: (req, res) => {
       res.render('add')
     },
 
-    deleteData: (req, res) => {
-        const {id} = req.params
+    // to get encrypt when add new user via dashboard
+    dashboardAuth: passport.authenticate('local', { 
+        successRedirect: '/dashboard',
+        failureRedirect: '/add',
+        failureFlash: true
+    }),
+
+    postAddUser: (req, res) =>{
+        let {username, password, first_name, last_name, birthplace} = req.body
+        user_game.register({username, password}) //based on views
+            .then(user_game => {
+                user_game_biodata.create({
+                    id_user: user_game.id,
+                    first_name,
+                    last_name,
+                    birthplace
+                }). then(response => {
+                    res.redirect('/dashboard')
+                })
+            })  
+    },
+
+    deleteUser: (req, res) => {
+        let {id} = req.params
     
         user_game.destroy({
-          where: {id}
-    
-        }).then(response => {
+            where: {id}
+        }) .then(user_game_biodata.destroy({
+            where: {id}
+        }) .then(response=> {
            res.redirect('/dashboard')
-        })
+        }))
     },
 
-    addData: (req,res) => {
-        const { username, password, first_name, last_name, birthplace } = req.body
-       
-        user_game.create({
-          username,
-          password,
-          isSuperAdmin: false
     
-        }).then(user_game => {
-        
-        user_game_biodata.create({
-          id_user: user_game.id,
-          first_name,
-          last_name,
-          birthplace
-    
-        }).then(response => {
-           res.redirect('/dashboard')
-          })
-        })
-    },
-
     editData: (req, res) => {
-        const {id} = req.params
-    
+        let {id} = req.params
+
         user_game.findOne({
           where: {id},
           include: user_game_biodata
@@ -60,9 +63,9 @@ module.exports = {
     },
 
     editDataPost: (req, res) =>{
-        const {id} = req.params
+        let {id} = req.params
        
-        const {username, password, first_name, last_name, birthplace} = req.body
+        let {username, password, first_name, last_name, birthplace} = req.body
     
         user_game.update({
           username, password
